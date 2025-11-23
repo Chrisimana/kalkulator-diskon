@@ -27,7 +27,7 @@ class AplikasiDiskon:
         main_frame.pack(fill=tk.BOTH, expand=True)
         
         # Judul
-        title_label = ttk.Label(main_frame, text="🛍️ KALKULATOR DISKON 🛍️", 
+        title_label = ttk.Label(main_frame, text="KALKULATOR DISKON", 
                                font=self.font_title, foreground="#2c3e50")
         title_label.pack(pady=10)
         
@@ -99,10 +99,8 @@ class AplikasiDiskon:
         self.entry_harga.bind('<Return>', lambda e: self.entry_diskon.focus())
         self.entry_diskon.bind('<Return>', lambda e: self.hitung_diskon())
     
+    # Menghitung diskon berdasarkan input user
     def hitung_diskon(self):
-        """
-        Menghitung harga diskon berdasarkan input
-        """
         harga_str = self.entry_harga.get().strip()
         diskon_str = self.entry_diskon.get().strip()
         
@@ -138,10 +136,8 @@ class AplikasiDiskon:
         except Exception as e:
             messagebox.showerror("Error Perhitungan", f"Terjadi kesalahan: {str(e)}")
     
+    # Menampilkan hasil perhitungan
     def tampilkan_hasil(self, harga_asal, diskon, harga_diskon):
-        """
-        Menampilkan hasil perhitungan
-        """
         harga_asal_fmt = f"Rp {harga_asal:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
         harga_diskon_fmt = f"Rp {harga_diskon:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
         selisih = harga_asal - harga_diskon
@@ -155,10 +151,8 @@ class AplikasiDiskon:
                       f"Total Diskon: {selisih_fmt}")
         self.label_detail.config(text=detail_text)
     
+    # Reset input dan hasil
     def reset_input(self):
-        """
-        Mereset input field
-        """
         self.entry_harga.delete(0, tk.END)
         self.entry_diskon.delete(0, tk.END)
         self.label_hasil.config(text="Masukkan harga dan diskon untuk melihat hasil", 
@@ -166,10 +160,8 @@ class AplikasiDiskon:
         self.label_detail.config(text="")
         self.entry_harga.focus()
     
+    # Menampilkan history di text area
     def tampilkan_history(self):
-        """
-        Menampilkan riwayat perhitungan
-        """
         history = self.history_manager.get_history()
         self.history_text.delete(1.0, tk.END)
         
@@ -192,19 +184,15 @@ class AplikasiDiskon:
                   f"{entry['diskon']:<8} {harga_diskon_fmt:<15}\n")
             self.history_text.insert(tk.END, row)
     
+    # Menghapus semua riwayat perhitungan
     def hapus_history(self):
-        """
-        Menghapus semua riwayat perhitungan
-        """
         if messagebox.askyesno("Konfirmasi", "Apakah Anda yakin ingin menghapus semua riwayat?"):
             self.history_manager.hapus_history()
             self.tampilkan_history()
             messagebox.showinfo("Sukses", "Riwayat berhasil dihapus!")
     
+    # Mengekspor history ke file CSV
     def export_history(self):
-        """
-        Mengekspor history ke file CSV
-        """
         if self.history_manager.export_to_csv():
             messagebox.showinfo("Sukses", "History berhasil diexport ke file 'history_diskon.csv'")
         else:

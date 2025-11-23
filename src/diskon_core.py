@@ -1,9 +1,8 @@
 class DiskonCalculator:
     @staticmethod
+
+    # Menghitung harga setelah diskon
     def hitung_diskon(harga_asal, diskon):
-        """
-        Menghitung harga setelah diskon
-        """
         if diskon > 100:
             raise ValueError("Diskon tidak boleh lebih dari 100%")
         if diskon < 0:
@@ -15,10 +14,8 @@ class DiskonCalculator:
         return round(harga_diskon, 2)
     
     @staticmethod
+    # Validasi input harga
     def validasi_input_harga(harga_str):
-        """
-        Validasi input harga
-        """
         if not harga_str:
             return False, "Harga tidak boleh kosong"
         
@@ -31,10 +28,8 @@ class DiskonCalculator:
             return False, "Harga harus berupa angka"
     
     @staticmethod
+    # Validasi input diskon
     def validasi_input_diskon(diskon_str):
-        """
-        Validasi input diskon
-        """
         if not diskon_str:
             return False, "Diskon tidak boleh kosong"
         

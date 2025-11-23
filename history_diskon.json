@@ -22,5 +22,11 @@
     "harga_asal": 10000000.0,
     "diskon": 99.9,
     "harga_diskon": 10000.0
+  },
+  {
+    "timestamp": "2025-11-23 13:50:04",
+    "harga_asal": 10000.0,
+    "diskon": 12.0,
+    "harga_diskon": 8800.0
   }
 ]

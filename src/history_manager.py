@@ -8,10 +8,8 @@ class HistoryManager:
         self.history = []
         self.load_history()
     
+    # Memuat history dari file JSON
     def load_history(self):
-        """
-        Memuat history dari file JSON
-        """
         if os.path.exists(self.filename):
             try:
                 with open(self.filename, 'r', encoding='utf-8') as file:
@@ -19,10 +17,8 @@ class HistoryManager:
             except (json.JSONDecodeError, Exception):
                 self.history = []
     
+    # Menyimpan history ke file JSON
     def save_history(self):
-        """
-        Menyimpan history ke file JSON
-        """
         try:
             with open(self.filename, 'w', encoding='utf-8') as file:
                 json.dump(self.history, file, ensure_ascii=False, indent=2)
@@ -30,10 +26,8 @@ class HistoryManager:
         except Exception:
             return False
     
+    # Menambahkan perhitungan ke history
     def tambah_history(self, harga_asal, diskon, harga_diskon):
-        """
-        Menambahkan perhitungan ke history
-        """
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         entry = {
             "timestamp": timestamp,
@@ -44,25 +38,19 @@ class HistoryManager:
         self.history.append(entry)
         self.save_history()
     
+    # Mendapatkan history
     def get_history(self, limit=None):
-        """
-        Mendapatkan history perhitungan
-        """
         if limit:
             return self.history[-limit:]
         return self.history
     
+    # Menghapus semua history
     def hapus_history(self):
-        """
-        Menghapus semua history
-        """
         self.history = []
         self.save_history()
     
+    # Mengekspor history ke file CSV
     def export_to_csv(self, filename="history_diskon.csv"):
-        """
-        Mengekspor history ke file CSV
-        """
         try:
             import csv
             with open(filename, 'w', newline='', encoding='utf-8') as file:

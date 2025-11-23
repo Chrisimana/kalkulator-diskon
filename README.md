@@ -145,23 +145,6 @@ python main.py
 
 ## 📚 Dokumentasi
 
-### Workflow Diagram
-
-```mermaid
-graph TD
-    A[User Input] --> B{GUI Interface}
-    B --> C[Input Validation]
-    C --> D{Valid?}
-    D -->|Yes| E[Calculate Discount]
-    D -->|No| F[Show Error Message]
-    E --> G[Save to History]
-    G --> H[Update GUI]
-    H --> I[Display Results]
-    F --> B
-```
-
----
-
 ### Data Flow
 
 1. **Input Phase**: User memasukkan harga dan diskon
@@ -261,6 +244,6 @@ Waktu,Harga Asal,Diskon (%),Harga Diskon
 
 **⭐ Jangan lupa beri bintang! ⭐**
 
-*Terima kasih telah menggunakan Kalkulator Diskon! 🛍️*
+*Terima kasih telah menggunakan Kalkulator Diskon!*
 
 </div>

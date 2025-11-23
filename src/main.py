@@ -1,10 +1,8 @@
 import tkinter as tk
-from gui_app import AplikasiDiskon
+from gui import AplikasiDiskon
 
+# Fungsi utama untuk menjalankan aplikasi
 def main():
-    """
-    Fungsi utama untuk menjalankan aplikasi
-    """
     try:
         root = tk.Tk()
         app = AplikasiDiskon(root)
